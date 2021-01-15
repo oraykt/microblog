@@ -1,23 +1,23 @@
 drop schema public cascade;
 
-drop table user if exists;
+drop table users if exists;
 
-create table user(
-	userId int,
+create table users(
+	userId bigint IDENTITY PRIMARY KEY,
 	firstName varchar(255),
 	lastName varchar(255)
 );
 
-drop table follower if exists;
+drop table followers if exists;
 
-create table follower (
-	userId int,
-	followerId int
+create table followers (
+	userId bigint ,
+	followerId bigint
 );
 
-drop table post if exists;
+drop table posts if exists;
 
-create table post (
-	userId int,
+create table posts (
+	userId bigint,
 	post varchar(255)
 );
