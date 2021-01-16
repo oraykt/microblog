@@ -12,8 +12,9 @@ import javax.persistence.Table;
 public class Follower {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO) // allows automatic generation of user ids
 
+	// all fields have to be filled that's why there nullable parameter used
 	@Column(name = "userId", nullable = false)
 	private int userId;
 

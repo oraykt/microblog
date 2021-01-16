@@ -16,6 +16,10 @@
 
 	<context:annotation-config />
 
+	<bean id = "FollowerDao" class = "pl.wwsis.microblog.dao.impl.FollowerDaoImpl.java" />
+	<bean id = "PostDao" class = "pl.wwsis.microblog.dao.impl.PostDaoImpl.java" />
+	<bean id = "UserDao" class = "pl.wwsis.microblog.dao.impl.UserDaoImpl.java" />
+	
 	<bean id="dataSource"
 		class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
 		<property name="driverClassName"

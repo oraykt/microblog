@@ -8,18 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO) // allows automatic generation of user ids
 
-	@Column(name="userId", nullable=false)
+	// all fields have to be filled that's why there nullable parameter used
+	@Column(name = "userId", nullable = false)
 	private int userId;
-	
-	@Column(name="firstName", nullable=false)
+
+	@Column(name = "firstName", nullable = false)
 	private String firstName;
-	
+
 	@Column(name = "lastName", nullable = false)
 	private String lastName;
 
