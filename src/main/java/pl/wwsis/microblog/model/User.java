@@ -13,29 +13,30 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // allows automatic generation of user ids
+	private long userId;
 
-	// all fields have to be filled that's why there nullable parameter used
-	@Column(name = "userId", nullable = false)
-	private int userId;
-
+	// all fields have to be filled that's why there nullable parameter is used
 	@Column(name = "firstName", nullable = false)
 	private String firstName;
 
 	@Column(name = "lastName", nullable = false)
 	private String lastName;
 
-	public User(int userId, String firstName, String lastName) {
+	public User() {
 		super();
-		this.userId = userId;
+	}
+
+	public User(String firstName, String lastName) {
+		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -54,4 +55,5 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 }

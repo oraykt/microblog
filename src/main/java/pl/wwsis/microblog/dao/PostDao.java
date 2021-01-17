@@ -2,8 +2,10 @@ package pl.wwsis.microblog.dao;
 
 import java.util.List;
 
-public interface PostDao<T> {
-	List<T> getUserTimeline(long id);
-	List<T> getUserFullTimeline(long id);
-	List<T> getFullPublicTimeline();
+public interface PostDao<Post> {
+	List<Post> getUserTimeline(long id);
+
+	List<Post> getUserFullTimeline(long id);
+
+	List<Post> getFullPublicTimeline();
 }

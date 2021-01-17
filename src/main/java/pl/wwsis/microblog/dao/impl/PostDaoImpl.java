@@ -8,27 +8,32 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import pl.wwsis.microblog.dao.PostDao;
+import pl.wwsis.microblog.model.Post;
 
 @Transactional
-public class PostDaoImpl implements PostDao {
+public class PostDaoImpl implements PostDao<Post> {
 
 	@PersistenceContext
 	EntityManager entityManager;
 
-	public List<?> getUserTimeline(long id) {
-		String hql = "SELECT post FROM Posts WHERE userId = :id";
+	public List<Post> getUserTimeline(long id) {
+		String hql = "SELECT post FROM Post WHERE userId = ?";
 		Query query = entityManager.createQuery(hql);
+		query.setParameter(0, id);
 		return query.getResultList();
 	}
 
-	public List getUserFullTimeline(long id) {
-		String hql = "select post from posts where userid = :id OR posts.userid IN (select followers.followerid from followers where userid = :id)";
+	public List<Post> getUserFullTimeline(long id) {
+		String hql = "SELECT p FROM Post p WHERE p.userId = ? OR "
+				+ "p.userId IN (SELECT f.followerId From Follower f where userId = ?)";
 		Query query = entityManager.createQuery(hql);
+		query.setParameter(0, id);
+		query.setParameter(1, id);
 		return query.getResultList();
 	}
 
-	public List getFullPublicTimeline() {
-		String hql = "select post from posts";
+	public List<Post> getFullPublicTimeline() {
+		String hql = "SELECT post FROM Post";
 		Query query = entityManager.createQuery(hql);
 		return query.getResultList();
 	}

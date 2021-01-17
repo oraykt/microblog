@@ -8,7 +8,7 @@ import pl.wwsis.microblog.dao.UserDao;
 import pl.wwsis.microblog.model.User;
 
 @Transactional
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl implements UserDao<User> {
 
 	@PersistenceContext
 	EntityManager entityManager;
@@ -19,9 +19,13 @@ public class UserDaoImpl implements UserDao {
 
 	}
 
-	public void addNewUser(User user) {
+	public User addNewUser(String firstName, String lastName) {
+
+		User newUser = new User(firstName, lastName);
 		// use entityManger default method to add a new user
-		entityManager.persist(user);
+		entityManager.persist(newUser);
+
+		return newUser;
 	}
 
 }

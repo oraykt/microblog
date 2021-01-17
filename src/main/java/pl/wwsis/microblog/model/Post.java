@@ -13,25 +13,38 @@ public class Post {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // allows automatic generation of user ids
+	private long id;
 
-	// all fields have to be filled that's why there nullable parameter used
+	// all fields have to be filled that's why there nullable parameter is used
 	@Column(name = "userId", nullable = false)
-	private int userId;
+	private long userId;
 
 	@Column(name = "post", nullable = false, length = 250)
 	private String post;
 
-	public Post(int userId, String post) {
+	public Post() {
+		super();
+	}
+
+	public Post(long userId, String post) {
 		super();
 		this.userId = userId;
 		this.post = post;
 	}
 
-	public int getUserId() {
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
@@ -42,4 +55,5 @@ public class Post {
 	public void setPost(String post) {
 		this.post = post;
 	}
+
 }

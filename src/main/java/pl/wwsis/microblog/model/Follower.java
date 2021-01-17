@@ -13,33 +13,37 @@ public class Follower {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // allows automatic generation of user ids
-
-	// all fields have to be filled that's why there nullable parameter used
+	private long id;
+	// all fields have to be filled that's why there nullable parameter is used
 	@Column(name = "userId", nullable = false)
-	private int userId;
+	private long userId;
 
 	@Column(name = "followerId", nullable = false)
-	private int followerId;
+	private long followerId;
 
-	public Follower(int userId, int followerId) {
+	public Follower() {
+		super();
+	}
+
+	public Follower(long userId, long followerId) {
 		super();
 		this.userId = userId;
 		this.followerId = followerId;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
 
-	public int getFollowerId() {
+	public long getFollowerId() {
 		return followerId;
 	}
 
-	public void setFollowerId(int followerId) {
+	public void setFollowerId(long followerId) {
 		this.followerId = followerId;
 	}
 }
